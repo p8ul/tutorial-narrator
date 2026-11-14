@@ -13,6 +13,9 @@ __pycache__/
 samples/
 output*
 
+# Local per-video working folders (scripts, source videos, outputs); never tracked
+work/
+
 # OS / tool caches
 .DS_Store
 .cache/
