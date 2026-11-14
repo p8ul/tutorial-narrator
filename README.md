@@ -229,6 +229,4 @@ offline.
 - [espeak-ng](https://github.com/espeak-ng/espeak-ng): phonemizer fallback
 - [FFmpeg](https://ffmpeg.org/): muxing and probing
 
-## License
 
-[Apache-2.0](LICENSE). Copyright 2026 Paul Kamita.
