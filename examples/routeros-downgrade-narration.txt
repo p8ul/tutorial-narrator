@@ -1,0 +1,11 @@
+00:00 | Let's downgrade a MikroTik router from Router O S seven back to version six. First, log in with WinBox.
+00:10 | Go to System, then Resources, and note the architecture name and current version. Ours is M M I P S, running version seven. Before going further, save a backup of your configuration.
+00:31 | Now open your browser, search for MikroTik download, and open the official downloads page. Under Router O S, select the architecture that matches your router. If you're not sure, switch back to WinBox and check Resources again.
+00:55 | Pick the version six release from the version list, then download the Router O S package.
+01:05 | Back in WinBox, open Files and drag the package into the file list. Wait for the upload to finish and the file to appear.
+01:20 | The upload only takes a few seconds, depending on your connection.
+01:39 | Here's the key step. Go to System, then Packages, and click Downgrade. Confirm the reboot.
+01:46 | Unlike upgrading, a normal reboot won't install an older version. The router now restarts and installs version six, so give it a few minutes.
+01:57 | When it's back, reconnect with WinBox. The neighbors list now shows version six.
+02:05 | In System, Packages, every package is now on version six point four nine.
+02:20 | Resources confirms version six point four nine. The downgrade is complete.

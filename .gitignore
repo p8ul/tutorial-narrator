@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local environment (see .env.example)
+.env
+
+# Generated audio/video: narrations, samples, test output
+*.wav
+*.mp4
+*.mov
+samples/
+output*
+
+# OS / tool caches
+.DS_Store
+.cache/
+# Claude Code local session state
+.claude/

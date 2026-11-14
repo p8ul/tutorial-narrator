@@ -1,0 +1,7 @@
+00:00 | Let's upgrade a MikroTik router from Router O S six to the latest version seven. Start by logging in with WinBox.
+00:09 | First, check your router. Go to System, then Resources, and note the architecture name. Ours is M M I P S, on version six point four nine.
+00:25 | Now open your browser and search for MikroTik download. Open the official downloads page. Under Router O S, select the architecture that matches your router. Choose a channel. Long term is the safest for production routers, while stable has the newest features. Then click the Router O S system package to download it.
+00:48 | Back in WinBox, open Files. Tip: click Backup here first to save your configuration. Now drag the downloaded package into the file list. Wait for the upload to finish completely, and don't close WinBox until the file appears in the list.
+01:12 | With the package uploaded, go to System, then Reboot. The router installs the new version while it starts up. This takes a few minutes, so don't unplug it.
+01:24 | When it comes back, reconnect with WinBox. The neighbors list already shows the new version.
+01:31 | Check System, Resources once more. The router is now on version seven. That's it. Your MikroTik is upgraded.
