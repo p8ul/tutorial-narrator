@@ -162,18 +162,29 @@ afplay samples/bm_george.wav
 
 ## Recommended folder layout
 
-Keep each tutorial in its own folder, outside the code repo:
+Keep each tutorial in its own folder under `work/<video-name>/` inside the repo:
 
 ```text
-~/Videos/narrations/
-├── routeros-upgrade/
-│   ├── routeros-upgrade-narration.txt
-│   ├── upgrade-router-os.mp4
-│   ├── upgrade-router-os-narrated.mp4      # generated
-│   └── upgrade-router-os-narration.wav     # generated
-└── routeros-downgrade/
-    └── ...
+tutorial-narrator/
+└── work/
+    ├── routeros-upgrade/
+    │   ├── routeros-upgrade-narration.txt
+    │   ├── upgrade-router-os.mp4
+    │   ├── upgrade-router-os-narrated.mp4      # generated
+    │   └── upgrade-router-os-narration.wav     # generated
+    └── routeros-downgrade/
+        └── ...
 ```
+
+Run from the repo root. The outputs are written next to the video, in the same folder:
+
+```bash
+.venv/bin/python narrate.py work/routeros-upgrade/routeros-upgrade-narration.txt \
+  work/routeros-upgrade/upgrade-router-os.mp4 --voice am_michael
+```
+
+> **Note:** `work/` is in `.gitignore`, so nothing in it is committed. Your scripts and videos there
+> are **not backed up by git**. Keep a copy elsewhere if you need one.
 
 ## Examples
 
