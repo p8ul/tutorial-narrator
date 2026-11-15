@@ -16,6 +16,9 @@ output*
 # Local per-video working folders (scripts, source videos, outputs); never tracked
 work/
 
+# Local branding (watermark/logo images); each user supplies their own, see README
+assets/
+
 # OS / tool caches
 .DS_Store
 .cache/
