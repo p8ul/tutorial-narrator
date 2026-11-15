@@ -107,6 +107,35 @@ video upgrade-router-os.mp4: 01:41.50 (101.50s), 7 segment(s)
 3 segment(s) overflow (not sped up: they overlap the next line, or get cut off at the end of the video):
 ```
 
+### Watermark (optional)
+
+To put a logo in the bottom-right corner of a narrated video, use ffmpeg directly.
+
+**`assets/` is not in the repo.** It's in `.gitignore`, so a fresh clone has no logo. Create the folder and
+add your own image first, or ffmpeg stops with `Error opening input file assets/watermark.png.`:
+
+```bash
+mkdir -p assets
+cp /path/to/your-logo.png assets/watermark.png   # PNG with a transparent background works best
+```
+
+Then run (macOS, using the Apple hardware encoder):
+
+```bash
+ffmpeg -i work/routeros-upgrade/upgrade-router-os-narrated.mp4 -i assets/watermark.png \
+  -filter_complex "[1]scale=240:-1,format=rgba,colorchannelmixer=aa=0.7[wm];[0][wm]overlay=W-w-30:H-h-30" \
+  -c:v h264_videotoolbox -b:v 8M -c:a copy work/routeros-upgrade/upgrade-router-os-final.mp4
+```
+
+- `scale=240:-1`: logo width in pixels; height keeps the aspect ratio.
+- `aa=0.7`: logo opacity (1.0 is solid).
+- `W-w-30:H-h-30`: 30 px from the right and bottom edges.
+- `-c:a copy`: the narration is kept as-is. The video is re-encoded because the overlay changes the pixels.
+
+`h264_videotoolbox` only exists on macOS. On Linux, or if ffmpeg says `Unknown encoder 'h264_videotoolbox'`,
+use the software encoder instead: replace `-c:v h264_videotoolbox -b:v 8M` with `-c:v libx264 -crf 18
+-preset medium`.
+
 ### Shell alias (optional)
 
 To run `speak` from any directory without activating the venv, add this to `~/.zshrc` (or `~/.bashrc`):
@@ -222,6 +251,14 @@ offline.
 **MPS vs CPU**
 `--device auto` uses Apple's GPU (MPS) when it can, then CUDA, then CPU. If you hit an MPS error, try
 `--device cpu`. It's slower, but the output is the same.
+
+**`Error opening input file assets/watermark.png.`**
+`assets/` is gitignored, so it isn't in a fresh clone. Run `mkdir -p assets` and copy your own logo to
+`assets/watermark.png`. See [Watermark](#watermark-optional).
+
+**`Unknown encoder 'h264_videotoolbox'`**
+That encoder is macOS-only. Use `-c:v libx264 -crf 18 -preset medium` instead of
+`-c:v h264_videotoolbox -b:v 8M`.
 
 ## Credits
 
